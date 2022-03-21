@@ -29,4 +29,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/homeAsUpIndicator" />
 
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_msg"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <Button
+        android:id="@+id/grocery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/grocery_btn"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="254dp" />
+
+    <Button
+        android:id="@+id/recipie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/recipie_btn"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="359dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
