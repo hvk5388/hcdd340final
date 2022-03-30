@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/recipie_name"
+        android:id="@+id/recipe_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="41dp" />
 
     <ImageButton
-        android:id="@+id/recipie_back"
+        android:id="@+id/recipe_back"
         android:layout_width="64dp"
         android:layout_height="64dp"
         app:srcCompat="?attr/homeAsUpIndicator"
@@ -23,10 +23,10 @@
         tools:layout_editor_absoluteY="29dp" />
 
     <TextView
-        android:id="@+id/recipie_welcome"
+        android:id="@+id/recipe_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recipie_welcome_msg"
+        android:text="@string/recipe_welcome_msg"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="116dp"
         tools:layout_editor_absoluteY="188dp" />

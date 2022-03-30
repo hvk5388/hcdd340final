@@ -5,14 +5,14 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "FINAL_PROJECT";
 
@@ -20,15 +20,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.recipe);
+        button.setOnClickListener(this);
+
+        button = findViewById(R.id.grocery);
+        button.setOnClickListener(this);
     }
 
     public void onClick(View view) {
         int eventSourceId = view.getId();
         Log.d(TAG, String.format("event source id: %s", eventSourceId));
 
-        if (eventSourceId == R.id.recipie) {
-            handleRecipieButtonClick();
+        if (eventSourceId == R.id.recipe) {
+            Log.d(TAG, String.format("caught recipe click event"));
+            handleRecipeButtonClick();
         } else if (eventSourceId == R.id.grocery) {
+            Log.d(TAG, String.format("caught grocery click event"));
             handleGroceryButtonClick();
         }
         else {
@@ -37,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Handle the click event for the "Recipie" Button
+     * Handle the click event for the "Recipe" Button
      */
-    private void handleRecipieButtonClick() {
-        Intent intent = new Intent(this, ShowRecipieActivity.class);
+    private void handleRecipeButtonClick() {
+        Intent intent = new Intent(this, ShowRecipeActivity.class);
 
         mGetStatus.launch(intent);
     }
@@ -53,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK) {
                         Log.d(TAG, "Result OK");
                     } else if (resultCode == RESULT_CANCELED) {
-                        Log.d(TAG, "Canceled from ShowRecipieActivity");
+                        Log.d(TAG, "Canceled from ShowRecipeActivity");
                     } else {
-                        Log.d(TAG, String.format("Unknown return code from ShowRecipieActivity: %s", resultCode));
+                        Log.d(TAG, String.format("Unknown return code from ShowRecipeActivity: %s", resultCode));
                     }
                 }
             }
