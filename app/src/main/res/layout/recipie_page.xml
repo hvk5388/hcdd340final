@@ -16,8 +16,8 @@
 
     <ImageButton
         android:id="@+id/recipie_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         app:srcCompat="?attr/homeAsUpIndicator"
         tools:layout_editor_absoluteX="18dp"
         tools:layout_editor_absoluteY="29dp" />

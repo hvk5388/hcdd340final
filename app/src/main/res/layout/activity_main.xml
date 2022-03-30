@@ -41,16 +41,20 @@
         android:id="@+id/grocery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="304dp"
         android:text="@string/grocery_btn"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="254dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/recipie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="384dp"
         android:text="@string/recipie_btn"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="359dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
