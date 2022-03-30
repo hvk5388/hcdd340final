@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <CheckBox
+        android:id="@+id/item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item2"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="341dp" />
+
     <TextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
@@ -30,4 +38,20 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         tools:layout_editor_absoluteX="154dp"
         tools:layout_editor_absoluteY="188dp" />
+
+    <CheckBox
+        android:id="@+id/item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item1"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <CheckBox
+        android:id="@+id/item3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item3"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="427dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

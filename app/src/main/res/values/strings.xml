@@ -7,6 +7,11 @@
 
     <!--    grocery screen-->
     <string name="grocery_welcome_msg">Grocery List</string>
+    <string name="item1">Item 1</string>
+    <string name="item2">Item 2</string>
+    <string name="item3">Item 3</string>
+
+
 
     <!--    recipe screen-->
     <string name="recipe_welcome_msg">Saved Recipes</string>
