@@ -18,6 +18,8 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
     private static final String TAG = "PROJECT_FINAL";
 
+    public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grocery_list);
@@ -61,7 +63,17 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                 public void onActivityResult(ActivityResult result) {
                     int resultCode = result.getResultCode();
                     if (resultCode == RESULT_OK) {
-                        Log.d(TAG, "Result OK");
+                        assert result.getData() != null;
+                        String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_ITEM);
+                        Log.d(TAG, String.format("Result OK " + newItemFromAdd));
+
+//                        // has the state changed?
+//                        SwitchCompat inOfficeSwitch = findViewById(R.id.switch_in_office);
+//                        if (inOfficeSwitch.isChecked() != inOfficeStatusFromDetails) {
+//                            Log.d(TAG, String.format("In-office state has changed from %s to %s", inOfficeSwitch.isChecked(), inOfficeStatusFromDetails));
+//                            storeInOfficeStatus(getCurrentProfileId(), inOfficeStatusFromDetails); // update shared preference
+//                            inOfficeSwitch.setChecked(inOfficeStatusFromDetails); // update UI
+//                        }
                     } else if (resultCode == RESULT_CANCELED) {
                         Log.d(TAG, "Canceled from AddGroceryActivity");
                     } else {
