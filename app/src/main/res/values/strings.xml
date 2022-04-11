@@ -14,6 +14,7 @@
 
     <!-- add grocery screen-->
     <string name="add_grocery_welcome_msg">Add Item</string>
+    <string name="item">Type Item Here</string>
     <string name="finish">Save</string>
 
     <!--    recipe screen-->

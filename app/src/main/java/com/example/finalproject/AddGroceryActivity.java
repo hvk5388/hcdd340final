@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.content.Intent;
 
@@ -38,11 +39,21 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.saveButton) {
-            setResult(RESULT_CANCELED);
+            EditText editText = findViewById(R.id.editTextGroceryItem);
+            String newItem = editText.getText().toString();
+            Log.d(TAG, "GroceryItem: \"" + newItem);
+
+            Intent returnIntent = new Intent();
+            returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+            setResult(RESULT_OK, returnIntent);
             finish();
         } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
+    }
+
+    public void handleSave(){
+
     }
 }
 
