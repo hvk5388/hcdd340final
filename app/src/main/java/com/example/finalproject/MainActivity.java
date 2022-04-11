@@ -50,10 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void handleRecipeButtonClick() {
         Intent intent = new Intent(this, ShowRecipeActivity.class);
 
-        mGetStatus.launch(intent);
+        recipeGetStatus.launch(intent);
     }
 
-    ActivityResultLauncher<Intent> mGetStatus = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    ActivityResultLauncher<Intent> recipeGetStatus = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void handleGroceryButtonClick() {
         Intent intent = new Intent(this, ShowGroceryActivity.class);
 
-        gGetStatus.launch(intent);
+        groceryGetStatus.launch(intent);
     }
 
-    ActivityResultLauncher<Intent> gGetStatus = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+    ActivityResultLauncher<Intent> groceryGetStatus = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
