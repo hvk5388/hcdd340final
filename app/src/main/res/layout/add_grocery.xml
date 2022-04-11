@@ -7,8 +7,8 @@
 
     <ImageButton
         android:id="@+id/addGroceryBack"
-        android:layout_width="115dp"
-        android:layout_height="93dp"
+        android:layout_width="93dp"
+        android:layout_height="73dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +28,8 @@
 
     <Button
         android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="60dp"
         android:layout_marginStart="136dp"
         android:layout_marginTop="416dp"
         android:text="@string/finish"
@@ -40,9 +40,11 @@
         android:id="@+id/editTextGroceryItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="324dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/item"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
