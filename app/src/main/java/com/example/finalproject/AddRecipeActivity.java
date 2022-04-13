@@ -10,13 +10,13 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddGroceryActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_grocery);
+        setContentView(R.layout.add_recipe);
 
         ImageButton button = findViewById(R.id.addRecipeBack);
         button.setOnClickListener(this);
@@ -35,12 +35,17 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.saveButton) {
-            EditText editText = findViewById(R.id.editTextRecipeItem);
-            String newItem = editText.getText().toString();
-            Log.d(TAG, "GroceryItem: \"" + newItem);
+            EditText editTextItem = findViewById(R.id.editTextRecipeItem);
+            EditText editTextStep = findViewById(R.id.editTextRecipeStep);
+            String newItem = editTextItem.getText().toString();
+            String newStep = editTextStep.getText().toString();
+            Log.d(TAG, "Item: \"" + newItem);
+            Log.d(TAG, "Step: \"" + newStep);
+
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+            returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_STEP, newStep);
             setResult(RESULT_OK, returnIntent);
             finish();
         } else {
@@ -52,4 +57,5 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
 
     }
 }
+
 

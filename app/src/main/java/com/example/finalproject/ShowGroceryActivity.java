@@ -67,6 +67,8 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_ITEM);
                         Log.d(TAG, String.format("Result OK " + newItemFromAdd));
 
+                        //add item to list
+
 //                        // has the state changed?
 //                        SwitchCompat inOfficeSwitch = findViewById(R.id.switch_in_office);
 //                        if (inOfficeSwitch.isChecked() != inOfficeStatusFromDetails) {

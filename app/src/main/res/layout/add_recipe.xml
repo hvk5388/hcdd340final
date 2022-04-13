@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
         android:layout_marginTop="240dp"
-        android:text="@string/add_grocery_welcome_msg"
+        android:text="@string/add_recipe_welcome_msg"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,9 +30,9 @@
         android:id="@+id/saveButton"
         android:layout_width="112dp"
         android:layout_height="60dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="416dp"
-        android:text="@string/finish"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="596dp"
+        android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,18 @@
         android:layout_marginTop="324dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/item"
+        android:text="@string/ingredient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextRecipeStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/step"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="432dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,14 @@
     <string name="item">Type Item Here</string>
     <string name="finish">Save</string>
 
+    <!-- add recipe screen-->
+    <string name="add_recipe_welcome_msg">Add Recipe</string>
+    <string name="ingredient">Type Ingredient Here</string>
+    <string name="step">Type Step Here</string>
+    <string name="save">Save</string>
+
     <!--    recipe screen-->
     <string name="recipe_welcome_msg">Saved Recipes</string>
+    <string name="addrecipebtn">Add Recipe</string>
 
 </resources>
