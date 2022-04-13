@@ -13,6 +13,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class ShowRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
@@ -70,9 +72,15 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
                         String newStepFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_STEP);
                         Log.d(TAG, String.format("Result OK. Item: " + newItemFromAdd + " Step: " + newStepFromAdd));
 
+                        //positive snackbar
+                        Snackbar.make(findViewById(R.id.addRecipe), "Recipe Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
+
                         //add item to list
                     } else if (resultCode == RESULT_CANCELED) {
                         Log.d(TAG, "Canceled from AddRecipeActivity");
+
+                        //negative snackbar
+                        Snackbar.make(findViewById(R.id.addRecipe), "No Recipe Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.red)).show();
                     } else {
                         Log.d(TAG, String.format("Unknown return code from AddRecipeActivity: %s", resultCode));
                     }

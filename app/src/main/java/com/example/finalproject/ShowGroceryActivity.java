@@ -14,6 +14,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class ShowGroceryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
@@ -67,6 +69,9 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_ITEM);
                         Log.d(TAG, String.format("Result OK " + newItemFromAdd));
 
+                        //positive snackbar
+                        Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
+
                         //add item to list
 
 //                        // has the state changed?
@@ -78,6 +83,9 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 //                        }
                     } else if (resultCode == RESULT_CANCELED) {
                         Log.d(TAG, "Canceled from AddGroceryActivity");
+
+                        //negative snackbar
+                        Snackbar.make(findViewById(R.id.addbtn), "No Groceries Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.red)).show();
                     } else {
                         Log.d(TAG, String.format("Unknown return code from AddGroceryActivity: %s", resultCode));
                     }
