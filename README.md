@@ -12,6 +12,16 @@ In order to run this project you need to install [android studio](https://develo
 4. Saved Recipes
 5. Add New Recipe
 
+### Overall structure 
+ - What do different modules and files do?  
+ - What are the major functions? 
+ - What external libraries did you use and why? 
+
+### Information about additional features. For example: 
+ - Did you implement any additional features to earn extra points? 
+ - What was the design justification of this feature (i.e., why does it matter and for whom?) 
+ - How did you implement it? 
+
 ## Contributors
 - Developer
   * Hannah Kern: @hvk5388
