@@ -27,6 +27,9 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
         ImageButton button = findViewById(R.id.recipe_back);
         button.setOnClickListener(this);
 
+        Button addButton = findViewById(R.id.addRecipe);
+        addButton.setOnClickListener(this);
+
         Log.d(TAG, "On Create");
     }
 
@@ -35,17 +38,17 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
         Log.d(TAG, String.format("Clicked on: %s", eventSourceId));
 
         if (eventSourceId == R.id.recipe_back) {
+            Log.d(TAG, String.format("show: caught back click event"));
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.addRecipe) {
-            Log.d(TAG, String.format("caught add click event"));
+            Log.d(TAG, String.format("show: caught add click event"));
             handleAddButtonClick();
         }
         else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
     }
-
 
     /**
      * Handle the click event for the "Grocery" Button

@@ -36,10 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, String.format("event source id: %s", eventSourceId));
 
         if (eventSourceId == R.id.recipe) {
-            Log.d(TAG, String.format("caught recipe click event"));
+            Log.d(TAG, String.format("main: caught recipe click event"));
             handleRecipeButtonClick();
         } else if (eventSourceId == R.id.grocery) {
-            Log.d(TAG, String.format("caught grocery click event"));
+            Log.d(TAG, String.format("main: caught grocery click event"));
             handleGroceryButtonClick();
         }
         else {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (resultCode == RESULT_OK) {
                         Log.d(TAG, "Result OK");
                     } else if (resultCode == RESULT_CANCELED) {
-                        Log.d(TAG, "Canceled from ShowRecipeActivity");
+                        Log.d(TAG, "main: Canceled from ShowRecipeActivity");
                     } else {
                         Log.d(TAG, String.format("Unknown return code from ShowRecipeActivity: %s", resultCode));
                     }

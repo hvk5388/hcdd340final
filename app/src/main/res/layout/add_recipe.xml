@@ -30,8 +30,8 @@
         android:id="@+id/saveButton"
         android:layout_width="112dp"
         android:layout_height="60dp"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="596dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="492dp"
         android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -52,10 +52,12 @@
         android:id="@+id/editTextRecipeStep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="404dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/step"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="432dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
