@@ -12,6 +12,8 @@ In order to run this project you need to install [android studio](https://develo
 4. Saved Recipes
 5. Add New Recipe
 
+All of these pages also support landscape viewing
+
 ### Overall structure 
  - What do different modules and files do?  
  - What are the major functions? 
