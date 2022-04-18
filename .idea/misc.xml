@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout-land/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout-land/add_grocery.xml" value="0.1390625" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout-land/add_recipe.xml" value="0.1390625" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout-land/grocery_list.xml" value="0.1390625" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout-land/recipe_page.xml" value="0.1390625" />
         <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/activity_main.xml" value="0.268" />
-        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/add_grocery.xml" value="0.268" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/add_grocery.xml" value="0.2" />
+        <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/add_recipe.xml" value="0.2" />
         <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/grocery_list.xml" value="0.268" />
         <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/recipe_page.xml" value="0.16530797101449277" />
         <entry key="..\:/Users/hkgob/AndroidStudioProjects/HCDD340/final project/app/src/main/res/layout/recipie_page.xml" value="0.17300724637681159" />

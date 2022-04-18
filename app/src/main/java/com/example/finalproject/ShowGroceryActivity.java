@@ -32,6 +32,9 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         Button addButton = findViewById(R.id.addbtn);
         addButton.setOnClickListener(this);
 
+        //populate the list
+        populateGroceryList();
+
         Log.d(TAG, "On Create");
     }
 
@@ -73,14 +76,8 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
 
                         //add item to list
+                        populateGroceryList();
 
-//                        // has the state changed?
-//                        SwitchCompat inOfficeSwitch = findViewById(R.id.switch_in_office);
-//                        if (inOfficeSwitch.isChecked() != inOfficeStatusFromDetails) {
-//                            Log.d(TAG, String.format("In-office state has changed from %s to %s", inOfficeSwitch.isChecked(), inOfficeStatusFromDetails));
-//                            storeInOfficeStatus(getCurrentProfileId(), inOfficeStatusFromDetails); // update shared preference
-//                            inOfficeSwitch.setChecked(inOfficeStatusFromDetails); // update UI
-//                        }
                     } else if (resultCode == RESULT_CANCELED) {
                         Log.d(TAG, "Canceled from AddGroceryActivity");
 
@@ -92,4 +89,36 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                 }
             }
     );
+
+    //populate grocery list
+    private void populateGroceryList() {
+        //check if shared preferences is empty
+//        if(){
+//            //if it is have no content say that
+//            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
+//            parentLayout.addView("No Groceries Needed :)");
+//        } else {
+//              //if not publish children to parent element
+//              // Parent layout
+//              LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
+//
+//              // Layout inflater
+//              LayoutInflater layoutInflater = getLayoutInflater();
+//              View view;
+//
+//              for (int i = 1; i < 101; i++){
+//                  // Add the text layout to the parent layout
+//                  view = layoutInflater.inflate(R.layout.text_layout, parentLayout, false);
+//
+//                  // In order to get the view we have to use the new view with text_layout in it
+//                  TextView textView = (TextView)view.findViewById(R.id.text);
+//                  textView.setText("Row " + i);
+//
+//                  // Add the text view to the parent layout
+//                  parentLayout.addView(textView);
+//              }
+//        }
+
+        //addView()
+    }
 }
