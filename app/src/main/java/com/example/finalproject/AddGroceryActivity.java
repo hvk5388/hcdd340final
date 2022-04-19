@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,9 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
 
     private static final String TAG = "PROJECT_FINAL";
 
+    private SharedPreferences sharedPreferences;
+    private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_grocery);
@@ -23,6 +27,11 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
 
         Button saveButton = findViewById(R.id.saveButton);
         saveButton.setOnClickListener(this);
+
+        /*
+        Set up shared preferences
+         */
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_final), MODE_PRIVATE);
 
         Log.d(TAG, "On Create");
     }
@@ -38,6 +47,11 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
             EditText editText = findViewById(R.id.editTextRecipeItem);
             String newItem = editText.getText().toString();
             Log.d(TAG, "GroceryItem: \"" + newItem);
+
+            //add to shared preferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
+            editor.apply();
 
             Intent returnIntent = new Intent();
             returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);

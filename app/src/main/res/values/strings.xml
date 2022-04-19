@@ -27,4 +27,8 @@
     <string name="recipe_welcome_msg">Saved Recipes</string>
     <string name="addrecipebtn">Add Recipe</string>
 
+    <!-- shared preferences-->
+    <string name="shared_pref_final">edu.psu.ist.hcdd340.final</string>
+
+
 </resources>

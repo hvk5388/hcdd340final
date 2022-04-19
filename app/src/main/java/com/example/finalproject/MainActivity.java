@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
     public static final String EXTRA_RETURN_NEW_STEP = "RETURN_NEW_STEP";
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         button = findViewById(R.id.grocery);
         button.setOnClickListener(this);
+
+        /*
+        Set up shared preferences
+         */
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_final), MODE_PRIVATE);
     }
 
     public void onClick(View view) {

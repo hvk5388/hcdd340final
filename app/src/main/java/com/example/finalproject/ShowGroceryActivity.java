@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,10 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
     private static final String TAG = "PROJECT_FINAL";
 
     public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
+    private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
+
+
+    private SharedPreferences sharedPreferences;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,11 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
         Button addButton = findViewById(R.id.addbtn);
         addButton.setOnClickListener(this);
+
+        /*
+        Set up shared preferences
+         */
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_final), MODE_PRIVATE);
 
         //populate the list
         populateGroceryList();
@@ -75,6 +85,12 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         //positive snackbar
                         Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
 
+                        //get from shared preferences
+                        String defVal= "";
+                        String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+                        Log.d(TAG, String.format("shared pref:" + newItemFromSP));
+
+
                         //add item to list
                         populateGroceryList();
 
@@ -93,12 +109,14 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
     //populate grocery list
     private void populateGroceryList() {
         //check if shared preferences is empty
-//        if(){
-//            //if it is have no content say that
+        String currentSP = sharedPreferences.getString(SHARED_PREF_GROCERY_ITEM, "");
+
+        if(currentSP == ""){
+            //if it is have no content say that
 //            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
 //            parentLayout.addView("No Groceries Needed :)");
-//        } else {
-//              //if not publish children to parent element
+        } else {
+              //if not publish children to parent element
 //              // Parent layout
 //              LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
 //
@@ -117,7 +135,7 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 //                  // Add the text view to the parent layout
 //                  parentLayout.addView(textView);
 //              }
-//        }
+        }
 
         //addView()
     }
