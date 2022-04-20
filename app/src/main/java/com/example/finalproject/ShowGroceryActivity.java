@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -90,7 +93,6 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
                         Log.d(TAG, String.format("shared pref:" + newItemFromSP));
 
-
                         //add item to list
                         populateGroceryList();
 
@@ -111,32 +113,27 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         //check if shared preferences is empty
         String currentSP = sharedPreferences.getString(SHARED_PREF_GROCERY_ITEM, "");
 
+        //use addView
         if(currentSP == ""){
             //if it is have no content say that
-//            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
-//            parentLayout.addView("No Groceries Needed :)");
-        } else {
-              //if not publish children to parent element
-//              // Parent layout
-//              LinearLayout parentLayout = (LinearLayout)findViewById(R.id.layout);
-//
-//              // Layout inflater
-//              LayoutInflater layoutInflater = getLayoutInflater();
-//              View view;
-//
-//              for (int i = 1; i < 101; i++){
-//                  // Add the text layout to the parent layout
-//                  view = layoutInflater.inflate(R.layout.text_layout, parentLayout, false);
-//
-//                  // In order to get the view we have to use the new view with text_layout in it
-//                  TextView textView = (TextView)view.findViewById(R.id.text);
-//                  textView.setText("Row " + i);
-//
-//                  // Add the text view to the parent layout
-//                  parentLayout.addView(textView);
-//              }
-        }
+            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
 
-        //addView()
+            TextView emptyMessage = (TextView) findViewById(R.id.textView);
+            emptyMessage.setText("No Groceries Needed");
+            parentLayout.removeAllViews();
+            parentLayout.addView(emptyMessage);
+        } else {
+            //if not publish children to parent element
+            // Parent layout
+            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
+
+            String defVal= "";
+            String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+
+            TextView message = (TextView) findViewById(R.id.textView);
+            message.setText(newItemFromSP);
+            parentLayout.removeAllViews();
+            parentLayout.addView(message);
+        }
     }
 }

@@ -44,26 +44,26 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.saveButton) {
-            EditText editText = findViewById(R.id.editTextRecipeItem);
-            String newItem = editText.getText().toString();
-            Log.d(TAG, "GroceryItem: \"" + newItem);
-
-            //add to shared preferences
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
-            editor.apply();
-
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
-            setResult(RESULT_OK, returnIntent);
-            finish();
+            handleSave();
         } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
     }
 
     public void handleSave(){
+        EditText editText = findViewById(R.id.editTextRecipeItem);
+        String newItem = editText.getText().toString();
+        Log.d(TAG, "GroceryItem: \"" + newItem);
 
+        //add to shared preferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
+        editor.apply();
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+        setResult(RESULT_OK, returnIntent);
+        finish();
     }
 }
 
