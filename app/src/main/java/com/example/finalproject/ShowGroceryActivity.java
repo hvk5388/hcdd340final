@@ -20,11 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ShowGroceryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
 
-    public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
+    public static final Set<String> EXTRA_RETURN_NEW_ITEMS = new HashSet<String>();
+    //"RETURN_NEW_ITEM";
     private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
 
 
@@ -82,8 +86,8 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                     int resultCode = result.getResultCode();
                     if (resultCode == RESULT_OK) {
                         assert result.getData() != null;
-                        String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_ITEM);
-                        Log.d(TAG, String.format("Result OK " + newItemFromAdd));
+                        //Set<String> newItemsFromAdd = result.getData().getExtras().keySet(EXTRA_RETURN_NEW_ITEMS);
+                        //Log.d(TAG, String.format("Result OK " + newItemsFromAdd));
 
                         //positive snackbar
                         Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
@@ -129,6 +133,16 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
             String defVal= "";
             String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+
+//            Set<String> defVals = new HashSet<String>();
+//            Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
+
+//            for( String item : newItemsFromSP ) {
+//                TextView message = (TextView) findViewById(R.id.textView);
+//                message.setText(item);
+//                parentLayout.removeAllViews();
+//                parentLayout.addView(message);
+//            }
 
             TextView message = (TextView) findViewById(R.id.textView);
             message.setText(newItemFromSP);

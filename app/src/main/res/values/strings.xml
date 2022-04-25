@@ -29,6 +29,12 @@
 
     <!-- shared preferences-->
     <string name="shared_pref_final">edu.psu.ist.hcdd340.final</string>
+    <string name="add_an_item">Add An Item</string>
+    <string name="this_item_will_be_added_to_your_grocery_list">This item will be added to your grocery list.</string>
+    <string name="item_you_would_like_to_add">Item You Would Like to Add</string>
+    <string name="todo">TODO</string>
+    <string name="add_new_recipe">Add New Recipe</string>
+    <string name="here_is_where_start_your_journey_of_creating_a_recipe">Here is where start your journey of creating a recipe.</string>
 
 
 </resources>

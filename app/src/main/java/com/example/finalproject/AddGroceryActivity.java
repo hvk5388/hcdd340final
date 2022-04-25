@@ -11,6 +11,9 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class AddGroceryActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
@@ -55,8 +58,18 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
         String newItem = editText.getText().toString();
         Log.d(TAG, "GroceryItem: \"" + newItem);
 
+//        Set<String> items = new HashSet<String>();
+//        items.add(newItem);
+//        Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
+
+//        String item = new String();
+//        String defVal= "";
+//        String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+
         //add to shared preferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        //putStringSet
         editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
         editor.apply();
 
