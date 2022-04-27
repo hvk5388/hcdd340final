@@ -69,7 +69,7 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
         //add to shared preferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        //putStringSet
+        //putString
         editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
         editor.apply();
 

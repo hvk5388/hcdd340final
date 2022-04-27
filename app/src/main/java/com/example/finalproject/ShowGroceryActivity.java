@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,7 +25,7 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
     private static final String TAG = "PROJECT_FINAL";
 
-    public static final Set<String> EXTRA_RETURN_NEW_ITEMS = new HashSet<String>();
+    //public static final Set<String> EXTRA_RETURN_NEW_ITEMS = new HashSet<String>();
     //"RETURN_NEW_ITEM";
     private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
 
@@ -38,7 +36,7 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grocery_list);
 
-        ImageButton button = findViewById(R.id.groceryBack);
+        ImageButton button = findViewById(R.id.addRecipeBack);
         button.setOnClickListener(this);
 
         Button addButton = findViewById(R.id.addbtn);
@@ -59,7 +57,7 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         int eventSourceId = view.getId();
         Log.d(TAG, String.format("Clicked on: %s", eventSourceId));
 
-        if (eventSourceId == R.id.groceryBack) {
+        if (eventSourceId == R.id.addRecipeBack) {
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.addbtn) {
@@ -122,17 +120,19 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
             //if it is have no content say that
             LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
 
-            TextView emptyMessage = (TextView) findViewById(R.id.textView);
+            TextView emptyMessage = (TextView) findViewById(R.id.itemTextView);
             emptyMessage.setText("No Groceries Needed");
             parentLayout.removeAllViews();
             parentLayout.addView(emptyMessage);
         } else {
+            Log.d(TAG, String.format("shared pref in populate:" + currentSP));
+
             //if not publish children to parent element
             // Parent layout
             LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
 
-            String defVal= "";
-            String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+//            String defVal= "";
+//            String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
 
 //            Set<String> defVals = new HashSet<String>();
 //            Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
@@ -144,8 +144,8 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 //                parentLayout.addView(message);
 //            }
 
-            TextView message = (TextView) findViewById(R.id.textView);
-            message.setText(newItemFromSP);
+            TextView message = (TextView) findViewById(R.id.itemTextView);
+            message.setText(currentSP);
             parentLayout.removeAllViews();
             parentLayout.addView(message);
         }

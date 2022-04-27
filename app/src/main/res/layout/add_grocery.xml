@@ -84,14 +84,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="175dp"
-        android:layout_height="170dp"
-        android:contentDescription="@string/todo"
-        android:padding="8dp"
-        android:src="@drawable/logo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="220dp"
-        tools:layout_editor_absoluteY="93dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

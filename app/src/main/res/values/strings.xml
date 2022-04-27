@@ -35,6 +35,8 @@
     <string name="todo">TODO</string>
     <string name="add_new_recipe">Add New Recipe</string>
     <string name="here_is_where_start_your_journey_of_creating_a_recipe">Here is where start your journey of creating a recipe.</string>
+    <string name="meal_plan_app">Meal Plan App</string>
+    <string name="never_go_without_a_plan">Never go without a plan</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AddRecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "PROJECT_FINAL";
+
+    private SharedPreferences sharedPreferences;
+    private final static String SHARED_PREF_NEW_ITEM = "SHARED_PREF_NEW_ITEM";
+    private final static String SHARED_PREF_NEW_STEP = "SHARED_PREF_NEW_STEP";
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +60,39 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void handleSave(){
+        EditText editText = findViewById(R.id.editTextRecipeItem);
+        String newItem = editText.getText().toString();
+        Log.d(TAG, "RecipeItem: \"" + newItem);
 
+        //add to shared preferences
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        //putString
+        editor.putString(SHARED_PREF_NEW_ITEM, newItem);
+        editor.apply();
+
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+        setResult(RESULT_OK, returnIntent);
+
+        finish();
+
+//        EditText editStepText = findViewById(R.id.editTextRecipeStep);
+//        String newStep = editStepText.getText().toString();
+//        Log.d(TAG, "RecipeStep: \"" + newStep);
+//
+//        //add to shared preferences
+//        SharedPreferences.Editor stepEditor = sharedPreferences.edit();
+//
+//        //putString
+//        stepEditor.putString(SHARED_PREF_NEW_STEP, newStep);
+//        stepEditor.apply();
+//
+//        Intent returnStepIntent = new Intent();
+//        returnStepIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_STEP, newStep);
+//        setResult(RESULT_OK, returnIntent);
+//
+//        finish();
     }
 }
 
