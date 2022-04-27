@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "FINAL_PROJECT";
 
     public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
+    public static final String EXTRA_RETURN_NEW_INGREDIENT = "RETURN_NEW_INGREDIENT";
     public static final String EXTRA_RETURN_NEW_STEP = "RETURN_NEW_STEP";
 
     private SharedPreferences sharedPreferences;

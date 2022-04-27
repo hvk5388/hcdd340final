@@ -16,7 +16,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
     private static final String TAG = "PROJECT_FINAL";
 
     private SharedPreferences sharedPreferences;
-    private final static String SHARED_PREF_NEW_ITEM = "SHARED_PREF_NEW_ITEM";
+    private final static String SHARED_PREF_NEW_INGREDIENT = "SHARED_PREF_NEW_INGREDIENT";
     private final static String SHARED_PREF_NEW_STEP = "SHARED_PREF_NEW_STEP";
 
 
@@ -30,6 +30,11 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         Button saveButton = findViewById(R.id.saveButton);
         saveButton.setOnClickListener(this);
 
+                /*
+        Set up shared preferences
+         */
+        sharedPreferences = getSharedPreferences(getString(R.string.shared_pref_final), MODE_PRIVATE);
+
         Log.d(TAG, "On Create");
     }
 
@@ -41,19 +46,7 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
             setResult(RESULT_CANCELED);
             finish();
         } else if (eventSourceId == R.id.saveButton) {
-            EditText editTextItem = findViewById(R.id.editTextRecipeItem);
-            EditText editTextStep = findViewById(R.id.editTextRecipeStep);
-            String newItem = editTextItem.getText().toString();
-            String newStep = editTextStep.getText().toString();
-            Log.d(TAG, "Item: \"" + newItem);
-            Log.d(TAG, "Step: \"" + newStep);
-
-
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
-            returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_STEP, newStep);
-            setResult(RESULT_OK, returnIntent);
-            finish();
+            handleSave();
         } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
@@ -68,31 +61,31 @@ public class AddRecipeActivity extends AppCompatActivity implements View.OnClick
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         //putString
-        editor.putString(SHARED_PREF_NEW_ITEM, newItem);
+        editor.putString(SHARED_PREF_NEW_INGREDIENT, newItem);
         editor.apply();
 
         Intent returnIntent = new Intent();
-        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_INGREDIENT, newItem);
         setResult(RESULT_OK, returnIntent);
 
         finish();
 
-//        EditText editStepText = findViewById(R.id.editTextRecipeStep);
-//        String newStep = editStepText.getText().toString();
-//        Log.d(TAG, "RecipeStep: \"" + newStep);
-//
-//        //add to shared preferences
-//        SharedPreferences.Editor stepEditor = sharedPreferences.edit();
-//
-//        //putString
-//        stepEditor.putString(SHARED_PREF_NEW_STEP, newStep);
-//        stepEditor.apply();
-//
-//        Intent returnStepIntent = new Intent();
-//        returnStepIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_STEP, newStep);
-//        setResult(RESULT_OK, returnIntent);
-//
-//        finish();
+        EditText editStepText = findViewById(R.id.editTextRecipeStep);
+        String newStep = editStepText.getText().toString();
+        Log.d(TAG, "RecipeStep: \"" + newStep);
+
+        //add to shared preferences
+        SharedPreferences.Editor stepEditor = sharedPreferences.edit();
+
+        //putString
+        stepEditor.putString(SHARED_PREF_NEW_STEP, newStep);
+        stepEditor.apply();
+
+        Intent returnStepIntent = new Intent();
+        returnStepIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_STEP, newStep);
+        setResult(RESULT_OK, returnIntent);
+
+        finish();
     }
 }
 

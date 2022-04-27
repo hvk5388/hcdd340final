@@ -22,10 +22,10 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
 
     private static final String TAG = "PROJECT_FINAL";
 
-    public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
+    public static final String EXTRA_RETURN_NEW_INGREDIENT = "RETURN_NEW_INGREDIENT";
     public static final String EXTRA_RETURN_NEW_STEP = "RETURN_NEW_STEP";
 
-    private final static String SHARED_PREF_NEW_ITEM = "SHARED_PREF_NEW_ITEM";
+    private final static String SHARED_PREF_NEW_INGREDIENT = "SHARED_PREF_NEW_INGREDIENT";
     private final static String SHARED_PREF_NEW_STEP = "SHARED_PREF_NEW_STEP";
 
     private SharedPreferences sharedPreferences;
@@ -84,7 +84,7 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
                     int resultCode = result.getResultCode();
                     if (resultCode == RESULT_OK) {
                         assert result.getData() != null;
-                        String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_ITEM);
+                        String newItemFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_INGREDIENT);
                         String newStepFromAdd = result.getData().getStringExtra(EXTRA_RETURN_NEW_STEP);
                         Log.d(TAG, String.format("Result OK. Item: " + newItemFromAdd + " Step: " + newStepFromAdd));
 
@@ -108,8 +108,8 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
     //populate grocery list
     private void populateRecipeList() {
         //check if shared preferences is empty
-        String currentItemSP = sharedPreferences.getString(SHARED_PREF_NEW_ITEM, "");
-        //String currentStepSP = sharedPreferences.getString(SHARED_PREF_NEW_STEP, "");
+        String currentItemSP = sharedPreferences.getString(SHARED_PREF_NEW_INGREDIENT, "");
+        String currentStepSP = sharedPreferences.getString(SHARED_PREF_NEW_STEP, "");
 
         //use addView
         if(currentItemSP == ""){
@@ -122,7 +122,7 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
             parentLayout.addView(emptyMessage);
         } else {
             Log.d(TAG, String.format("shared pref in populate:" + currentItemSP));
-            //Log.d(TAG, String.format("shared pref in populate:" + currentStepSP));
+            Log.d(TAG, String.format("shared pref in populate:" + currentStepSP));
 
             //if not publish children to parent element
             // Parent layout
@@ -130,8 +130,11 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
 
             TextView message = (TextView) findViewById(R.id.itemTextView);
             message.setText(currentItemSP);
+            TextView stepMessage = (TextView) findViewById(R.id.stepTextView);
+            stepMessage.setText(currentStepSP);
             parentLayout.removeAllViews();
             parentLayout.addView(message);
+            parentLayout.addView(stepMessage);
         }
     }
 }
