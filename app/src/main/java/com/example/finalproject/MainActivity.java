@@ -13,10 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "FINAL_PROJECT";
 
+    public static final Set<String> EXTRA_RETURN_NEW_ITEMS = new HashSet<String>();
     public static final String EXTRA_RETURN_NEW_ITEM = "RETURN_NEW_ITEM";
     public static final String EXTRA_RETURN_NEW_INGREDIENT = "RETURN_NEW_INGREDIENT";
     public static final String EXTRA_RETURN_NEW_STEP = "RETURN_NEW_STEP";

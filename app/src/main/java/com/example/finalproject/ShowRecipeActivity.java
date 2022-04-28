@@ -40,6 +40,9 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
         Button addButton = findViewById(R.id.addRecipe);
         addButton.setOnClickListener(this);
 
+        Button deleteButton = findViewById(R.id.deletebtn);
+        deleteButton.setOnClickListener(this);
+
         /*
         Set up shared preferences
          */
@@ -62,8 +65,13 @@ public class ShowRecipeActivity extends AppCompatActivity implements View.OnClic
         } else if (eventSourceId == R.id.addRecipe) {
             Log.d(TAG, String.format("show: caught add click event"));
             handleAddButtonClick();
-        }
-        else {
+        } else if (eventSourceId == R.id.deletebtn){
+            Log.d(TAG, String.format("caught delete click event"));
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            populateRecipeList();
+        } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
     }

@@ -25,8 +25,7 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
     private static final String TAG = "PROJECT_FINAL";
 
-    //public static final Set<String> EXTRA_RETURN_NEW_ITEMS = new HashSet<String>();
-    //"RETURN_NEW_ITEM";
+    public static final Set<String> SHARED_PREF_GROCERY_ITEMS = new HashSet<String>();
     private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
 
 
@@ -41,6 +40,9 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
 
         Button addButton = findViewById(R.id.addbtn);
         addButton.setOnClickListener(this);
+
+        Button deleteButton = findViewById(R.id.deletebtn);
+        deleteButton.setOnClickListener(this);
 
         /*
         Set up shared preferences
@@ -63,6 +65,12 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         } else if (eventSourceId == R.id.addbtn) {
             Log.d(TAG, String.format("caught add click event"));
             handleAddButtonClick();
+        } else if (eventSourceId == R.id.deletebtn){
+            Log.d(TAG, String.format("caught delete click event"));
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+            populateGroceryList();
         } else {
             Log.d(TAG, String.format("Unknown click event source: %s", eventSourceId));
         }
@@ -84,8 +92,6 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                     int resultCode = result.getResultCode();
                     if (resultCode == RESULT_OK) {
                         assert result.getData() != null;
-                        //Set<String> newItemsFromAdd = result.getData().getExtras().keySet(EXTRA_RETURN_NEW_ITEMS);
-                        //Log.d(TAG, String.format("Result OK " + newItemsFromAdd));
 
                         //positive snackbar
                         Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
@@ -94,6 +100,10 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         String defVal= "";
                         String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
                         Log.d(TAG, String.format("shared pref:" + newItemFromSP));
+
+                        Set<String> defVals = new HashSet<String>();
+                        Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEMS", defVals);
+                        Log.d(TAG, String.format("shared pref:" + newItemsFromSP));
 
                         //add item to list
                         populateGroceryList();
@@ -115,6 +125,10 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
         //check if shared preferences is empty
         String currentSP = sharedPreferences.getString(SHARED_PREF_GROCERY_ITEM, "");
 
+        Set<String> defVals = new HashSet<String>();
+        Set<String> currentItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEMS", defVals);
+        Log.d(TAG, String.format("shared pref:" + currentItemsFromSP));
+
         //use addView
         if(currentSP == ""){
             //if it is have no content say that
@@ -126,28 +140,23 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
             parentLayout.addView(emptyMessage);
         } else {
             Log.d(TAG, String.format("shared pref in populate:" + currentSP));
+            Log.d(TAG, String.format("shared prefs in populate:" + currentItemsFromSP));
 
             //if not publish children to parent element
             // Parent layout
             LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
 
-//            String defVal= "";
-//            String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+//            TextView message = (TextView) findViewById(R.id.itemTextView);
+//            message.setText(currentSP);
+//            parentLayout.removeAllViews();
+//            parentLayout.addView(message);
 
-//            Set<String> defVals = new HashSet<String>();
-//            Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
-
-//            for( String item : newItemsFromSP ) {
-//                TextView message = (TextView) findViewById(R.id.textView);
-//                message.setText(item);
-//                parentLayout.removeAllViews();
-//                parentLayout.addView(message);
-//            }
-
-            TextView message = (TextView) findViewById(R.id.itemTextView);
-            message.setText(currentSP);
-            parentLayout.removeAllViews();
-            parentLayout.addView(message);
+            for( String item : currentItemsFromSP ) {
+                TextView message = (TextView) findViewById(R.id.itemTextView);
+                message.setText(item);
+                parentLayout.removeAllViews();
+                parentLayout.addView(message);
+            }
         }
     }
 }

@@ -20,6 +20,7 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
 
     private SharedPreferences sharedPreferences;
     private final static String SHARED_PREF_GROCERY_ITEM = "SHARED_PREF_GROCERY_ITEM";
+    private final static Set<String> SHARED_PREF_GROCERY_ITEMS = new HashSet<String>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,20 +59,24 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
         String newItem = editText.getText().toString();
         Log.d(TAG, "GroceryItem: \"" + newItem);
 
-//        Set<String> items = new HashSet<String>();
-//        items.add(newItem);
-//        Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
-
-//        String item = new String();
-//        String defVal= "";
-//        String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+        Set<String> items = new HashSet<String>();
+        items.add(newItem);
 
         //add to shared preferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+//        //putString
+//        editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
+//        editor.apply();
+
         //putString
-        editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
+        editor.putStringSet(SHARED_PREF_GROCERY_ITEM, items);
         editor.apply();
+//
+//        Intent returnIntent = new Intent();
+//        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
+//        setResult(RESULT_OK, returnIntent);
+//        finish();
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);

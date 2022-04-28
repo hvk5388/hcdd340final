@@ -50,7 +50,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="@string/ingredient"
+        android:hint="@string/ingredient"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -66,7 +66,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="49dp"
-        android:text="@string/step"
+        android:hint="@string/step"
         android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
