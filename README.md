@@ -15,19 +15,39 @@ In order to run this project you need to install [android studio](https://develo
 All of these pages also support landscape viewing
 
 ### Overall structure 
- - What do different modules and files do?  
- - What are the major functions? 
- - What external libraries did you use and why? 
+ - Modules and Files
+  * Each xml page is associated with a specific class
+     1. Main Page (MainActivity)
+       - Handle click methods are used to direct the user to the page they requested
+     2. Grocery List (ShowGroceryActivity)
+       - handleAddButtonClick is used to direct the user to the add grocery item page. It launches an intent
+       - When the user returns the onActivityResult will run and change what is needs to based on the outcome
+       - If an item was saved, populateGroceryList will add the saved item to the list
+     3. Add Grocery Item (AddGroceryActivity)
+       - If an item was saved, handleSave will take the tect and add it to shared preferences
+       - If the event was cancelled it returns and nothing is saved
+     4. Saved Recipes (ShowRecipeACtivity)
+       - handleAddButtonClick is used to direct the user to the add recipe page. It launches an intent
+       - When the user returns the onActivityResult will run and change what is needs to based on the outcome
+       - If an item was saved, populateRecipeList will add the saved recipe to the list
+     5. Add New Recipe (AddRecipeActivity)
+       - If an item was saved, handleSave will take the tect and add it to shared preferences
+       - If the event was cancelled it returns and nothing is saved
 
-### Information about additional features. For example: 
- - Did you implement any additional features to earn extra points? 
- - What was the design justification of this feature (i.e., why does it matter and for whom?) 
- - How did you implement it? 
+ - Major Functions
+  * Our application has two functions, creating a grocery list and saving recipes. To create a gorcery list you can add an item and the app will list it on that given page. The same thing happens with the recipe pages as well.
+
+### Extra Features 
+ - Landscape Mode
+  * For accessability reasons we generated landscape views of all of the screens.
+ - Data Storage
+  * Our app uses ashared preferences in order to store the information on gorceries and recipes.
+ - Five Screens
+  * In order to have the functionality for both the grocery list and the saved recipes we needed the associated add screens. This required us to design and build five screens as opposed to three.
 
 ## Contributors
 - Developer
   * Hannah Kern: @hvk5388
-- Designers
+- Designer
   * Neil Porterfield: @nzp126
-  * Carrigan Morabito: @cpmmorabtio
 
