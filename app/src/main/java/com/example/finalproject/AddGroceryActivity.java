@@ -59,24 +59,21 @@ public class AddGroceryActivity extends AppCompatActivity implements View.OnClic
         String newItem = editText.getText().toString();
         Log.d(TAG, "GroceryItem: \"" + newItem);
 
-        Set<String> items = new HashSet<String>();
-        items.add(newItem);
+        //pull current values
+        Set<String> defVals = new HashSet<String>();
+        Set<String> currentItems = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
+        Log.d(TAG, String.format("add grocery handle save:" + currentItems));
+
+        //add to new list
+        currentItems.add(newItem);
+        //push to shred pref
 
         //add to shared preferences
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-//        //putString
-//        editor.putString(SHARED_PREF_GROCERY_ITEM, newItem);
-//        editor.apply();
-
         //putString
-        editor.putStringSet(SHARED_PREF_GROCERY_ITEM, items);
+        editor.putStringSet(SHARED_PREF_GROCERY_ITEM, currentItems);
         editor.apply();
-//
-//        Intent returnIntent = new Intent();
-//        returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);
-//        setResult(RESULT_OK, returnIntent);
-//        finish();
 
         Intent returnIntent = new Intent();
         returnIntent.putExtra(MainActivity.EXTRA_RETURN_NEW_ITEM, newItem);

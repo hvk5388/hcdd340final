@@ -97,9 +97,9 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
                         Snackbar.make(findViewById(R.id.addbtn), "Grocery Added", Snackbar.LENGTH_LONG).setBackgroundTint(getColor(R.color.green)).show();
 
                         //get from shared preferences
-                        String defVal= "";
-                        String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
-                        Log.d(TAG, String.format("shared pref:" + newItemFromSP));
+//                        String defVal= "";
+//                        String newItemFromSP = sharedPreferences.getString("SHARED_PREF_GROCERY_ITEM", defVal);
+//                        Log.d(TAG, String.format("shared pref:" + newItemFromSP));
 
                         Set<String> defVals = new HashSet<String>();
                         Set<String> newItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEMS", defVals);
@@ -123,39 +123,33 @@ public class ShowGroceryActivity extends AppCompatActivity implements View.OnCli
     //populate grocery list
     private void populateGroceryList() {
         //check if shared preferences is empty
-        String currentSP = sharedPreferences.getString(SHARED_PREF_GROCERY_ITEM, "");
 
         Set<String> defVals = new HashSet<String>();
-        Set<String> currentItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEMS", defVals);
+        Set<String> currentItemsFromSP = sharedPreferences.getStringSet("SHARED_PREF_GROCERY_ITEM", defVals);
         Log.d(TAG, String.format("shared pref:" + currentItemsFromSP));
 
         //use addView
-        if(currentSP == ""){
+        if(currentItemsFromSP.isEmpty()){
             //if it is have no content say that
             LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
 
-            TextView emptyMessage = (TextView) findViewById(R.id.itemTextView);
-            emptyMessage.setText("No Groceries Needed");
+            TextView textView = new TextView(this);
+            textView.setText("No Groceries Needed");
             parentLayout.removeAllViews();
-            parentLayout.addView(emptyMessage);
+            parentLayout.addView(textView);
         } else {
-            Log.d(TAG, String.format("shared pref in populate:" + currentSP));
+            //Log.d(TAG, String.format("shared pref in populate:" + currentSP));
             Log.d(TAG, String.format("shared prefs in populate:" + currentItemsFromSP));
 
             //if not publish children to parent element
             // Parent layout
             LinearLayout parentLayout = (LinearLayout)findViewById(R.id.list);
-
-//            TextView message = (TextView) findViewById(R.id.itemTextView);
-//            message.setText(currentSP);
-//            parentLayout.removeAllViews();
-//            parentLayout.addView(message);
+            parentLayout.removeAllViews();
 
             for( String item : currentItemsFromSP ) {
-                TextView message = (TextView) findViewById(R.id.itemTextView);
-                message.setText(item);
-                parentLayout.removeAllViews();
-                parentLayout.addView(message);
+                TextView textView = new TextView(this);
+                textView.setText(item);
+                parentLayout.addView(textView);
             }
         }
     }
