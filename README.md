@@ -44,6 +44,8 @@ All of these pages also support landscape viewing
     * Our app uses ashared preferences in order to store the information on gorceries and recipes.
  - Five Screens
     * In order to have the functionality for both the grocery list and the saved recipes we needed the associated add screens. This required us to design and build five screens as opposed to three.
+ - Dynamic Views
+    * To ensure the grocery list and saved recipe functionality we employed a dynamic view. In order to do this we used addView().
 
 ## Contributors
 - Developer
